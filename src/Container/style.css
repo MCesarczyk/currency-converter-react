@@ -1,0 +1,17 @@
+.container {
+    max-width: 1024px;
+    margin: 20px auto;
+    padding: 0 20px;
+    background-image: url("../images/6b7c5fa6-b824-4430-b544-2102ad555fd1.png");
+    background-size: cover;
+    background-position: center;
+    background-color: #ddd;
+    background-attachment: fixed;
+}
+
+.container__element {
+    max-width: 620px;
+    margin: 20px auto;
+    padding: 0 20px;
+    background-color: #eee;
+}

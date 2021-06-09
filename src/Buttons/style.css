@@ -1,0 +1,30 @@
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 480px) {
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.buttons__button {
+    min-width: 165px;
+    color: #ebe6dc;
+    background-color: #133246;
+    display: inline-block;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 10px;
+    width: 45%;
+}
+
+.buttons__button:hover {
+    background-color: hsl(210, 40%, 30%);
+}
+
+.buttons__button:active {
+    background-color: hsl(210, 40%, 40%);
+}

@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import Container from "./Container";
+import Form from "./Form";
+import List from "./List";
+import Buttons from "./Buttons";
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Form
+        depositTitle="e-kantor"
+        title="Wpłacasz:" 
+        listTitle="Aktualny kurs"
+        list={<List/>}
+        resultTitle="Otrzymana kwota"
+        resultLabel="Dostajesz:"
+        buttons={<Buttons />}
+      />
+    </Container>
   );
 }
 
