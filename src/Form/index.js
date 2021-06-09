@@ -5,9 +5,13 @@ const Form = ({ title, depositTitle: inputTitle, listTitle, resultTitle, list, r
     const [newAmount, setNewAmount] = useState("");
     let [calculatedAmount, setCalculatedAmount] = useState("");
 
+    const calculateAmount = () => {
+        setCalculatedAmount(calculatedAmount => newAmount);
+    };
+
     const onFormSubmit = (event) => {
         event.preventDefault();
-        console.log(newAmount);
+        calculateAmount();
     };
 
     return (
