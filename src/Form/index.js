@@ -12,10 +12,16 @@ const Form = ({ title, depositTitle: inputTitle, listTitle, resultTitle, list, r
     const onFormSubmit = (event) => {
         event.preventDefault();
         calculateAmount();
+        setNewAmount("");
+    };
+
+    const onFormReset = () => {
+        setNewAmount("");
+        setCalculatedAmount("");
     };
 
     return (
-        <form className="form" onSubmit={onFormSubmit}>
+        <form className="form" onSubmit={onFormSubmit} onReset={onFormReset}>
             <fieldset className="form__fieldset">
                 <legend className="form__legend">{inputTitle}</legend>
                 <label className="form__inputLabel">
