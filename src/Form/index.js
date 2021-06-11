@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./style.css";
 
 const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, buttons }) => {
-    const currencyTable = [
+    const currencies = [
         {
             id: "EUR",
             rate: 4.5481,
@@ -35,22 +35,24 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, bu
 
     const [newAmount, setNewAmount] = useState("");
 
-    const [exchangeRate, setExchangeRate] = useState(4.5481);
-
     const [result, setResult] = useState([]);
 
     const onCurrencyChange = ({ target }) => {
         setChosenCurrency(target.value);
     };
 
+    const getExchangeRate = () => {
+        return (currencies.find(({ id }) => id === chosenCurrency).rate);
+    };
+
     const calculateResult = () => {
-        setNewAmount(newAmount);
-        setResult([(newAmount/exchangeRate).toFixed(2), chosenCurrency]);
+        setResult([(newAmount / getExchangeRate()).toFixed(2), chosenCurrency]);
     };
 
     const onFormSubmit = (event) => {
         event.preventDefault();
 
+        getExchangeRate();
         calculateResult();
         setNewAmount("");
     };
@@ -86,7 +88,7 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, bu
                 <legend className="form__legend">{listTitle}</legend>
                 {
                     <ul className="form__list">
-                        {currencyTable.map(currency => (
+                        {currencies.map(currency => (
                             <li className="form__listItem" key={currency.id} >
                                 <div className="form__listInputContainer">
                                     <input
