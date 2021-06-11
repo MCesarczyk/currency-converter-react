@@ -106,7 +106,7 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, bu
                                     </label>
                                 </div>
                                 <input
-                                    className="form__listInput"
+                                    className="form__input"
                                     value={currency.rate}
                                     type="number"
                                     min="0.0001"

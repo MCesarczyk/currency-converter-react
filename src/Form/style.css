@@ -37,18 +37,21 @@
 }
 
 .form__input {
-    min-width: 100px;
+    width: 150px;
     text-align: center;
     border-radius: 5px;
+    height: 24px;
 }
 
 .form__list {
     list-style: none;
     line-height: 1.75;
+    padding-left: 0;
 }
 
 .form__listItem {
     display: flex;
+    justify-content: space-evenly;
 }
 
 @media (max-width: 480px) {
@@ -68,8 +71,7 @@
     min-width: 220px;
 }
 
-.form__listInput {
-    width: 100px;
+.form__result {
+    max-width: 300px;
     text-align: center;
-    border-radius: 5px;
 }
