@@ -5,28 +5,28 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, bu
     const currencyTable = [
         {
             id: "EUR",
-            value: 4.5481,
+            rate: 4.5481,
             label: "Euro",
             checked: true,
         },
         {
             id: "USD",
-            value: 3.7978,
+            rate: 3.7978,
             label: "Dolar amerykański"
         },
         {
             id: "AUD",
-            value: 2.8517,
+            rate: 2.8517,
             label: "Dolar australijski"
         },
         {
             id: "BGN",
-            value: 2.3254,
+            rate: 2.3254,
             label: "Lew bułgarski"
         },
         {
             id: "HRK",
-            value: 0.6011,
+            rate: 0.6011,
             label: "Kuna chorwacka"
         }
     ];
@@ -35,27 +35,29 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, bu
 
     const [newAmount, setNewAmount] = useState("");
 
-    const [calculatedAmount, setCalculatedAmount] = useState([]);
+    const [exchangeRate, setExchangeRate] = useState(4.5481);
+
+    const [result, setResult] = useState([]);
 
     const onCurrencyChange = ({ target }) => {
         setChosenCurrency(target.value);
     };
 
-    const calculateAmount = () => {
+    const calculateResult = () => {
         setNewAmount(newAmount);
-        setCalculatedAmount([newAmount, chosenCurrency]);
+        setResult([(newAmount/exchangeRate).toFixed(2), chosenCurrency]);
     };
 
     const onFormSubmit = (event) => {
         event.preventDefault();
 
-        calculateAmount();
+        calculateResult();
         setNewAmount("");
     };
 
     const onFormReset = () => {
         setNewAmount("");
-        setCalculatedAmount("");
+        setResult("");
         setChosenCurrency("EUR");
     };
 
@@ -103,11 +105,12 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, bu
                                 </div>
                                 <input
                                     className="form__listInput"
-                                    value={currency.value}
+                                    value={currency.rate}
                                     type="number"
                                     min="0.0001"
                                     step="0.0001"
                                     required
+                                    readOnly
                                 />
                             </li>
                         ))
@@ -119,7 +122,7 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, bu
                 <legend className="form__legend">{resultTitle}</legend>
                 <p className="form__result">
                     {resultLabel}
-                    {calculatedAmount}
+                    {result}
                 </p>
                 {buttons}
             </fieldset>
