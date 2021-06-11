@@ -1,16 +1,54 @@
 import { useState } from "react";
 import "./style.css";
 
-const Form = ({ title, depositTitle: inputTitle, listTitle, resultTitle, list, resultLabel, buttons }) => {
+const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, buttons }) => {
+    const currencyTable = [
+        {
+            id: "EUR",
+            value: 4.5481,
+            label: "Euro",
+            checked: true,
+        },
+        {
+            id: "USD",
+            value: 3.7978,
+            label: "Dolar amerykański"
+        },
+        {
+            id: "AUD",
+            value: 2.8517,
+            label: "Dolar australijski"
+        },
+        {
+            id: "BGN",
+            value: 2.3254,
+            label: "Lew bułgarski"
+        },
+        {
+            id: "HRK",
+            value: 0.6011,
+            label: "Kuna chorwacka"
+        }
+    ];
+
+    const [chosenCurrency, setChosenCurrency] = useState("EUR");
+
     const [newAmount, setNewAmount] = useState("");
-    let [calculatedAmount, setCalculatedAmount] = useState("");
+
+    const [calculatedAmount, setCalculatedAmount] = useState([]);
+
+    const onCurrencyChange = ({ target }) => {
+        setChosenCurrency(target.value);
+    };
 
     const calculateAmount = () => {
-        setCalculatedAmount(calculatedAmount => newAmount);
+        setNewAmount(newAmount);
+        setCalculatedAmount([newAmount, chosenCurrency]);
     };
 
     const onFormSubmit = (event) => {
         event.preventDefault();
+
         calculateAmount();
         setNewAmount("");
     };
@@ -18,6 +56,7 @@ const Form = ({ title, depositTitle: inputTitle, listTitle, resultTitle, list, r
     const onFormReset = () => {
         setNewAmount("");
         setCalculatedAmount("");
+        setChosenCurrency("EUR");
     };
 
     return (
@@ -43,11 +82,45 @@ const Form = ({ title, depositTitle: inputTitle, listTitle, resultTitle, list, r
             </fieldset>
             <fieldset className="form__fieldset">
                 <legend className="form__legend">{listTitle}</legend>
-                {list}
+                {
+                    <ul className="form__list">
+                        {currencyTable.map(currency => (
+                            <li className="form__listItem" key={currency.id} >
+                                <div className="form__listInputContainer">
+                                    <input
+                                        type="radio"
+                                        name="chosenCurrency"
+                                        id={currency.id}
+                                        value={currency.id}
+                                        defaultChecked={currency.checked}
+                                        onChange={onCurrencyChange}
+                                    />
+                                    <label
+                                        className="form__listLabel"
+                                        htmlFor={currency.id}>
+                                        {currency.label}
+                                    </label>
+                                </div>
+                                <input
+                                    className="form__listInput"
+                                    value={currency.value}
+                                    type="number"
+                                    min="0.0001"
+                                    step="0.0001"
+                                    required
+                                />
+                            </li>
+                        ))
+                        };
+                 </ul>
+                }
             </fieldset>
             <fieldset className="form__fieldset">
                 <legend className="form__legend">{resultTitle}</legend>
-                <p className="form__result">{resultLabel} {calculatedAmount} </p>
+                <p className="form__result">
+                    {resultLabel}
+                    {calculatedAmount}
+                </p>
                 {buttons}
             </fieldset>
         </form>

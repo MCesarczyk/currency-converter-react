@@ -42,3 +42,34 @@
     border-radius: 5px;
 }
 
+.form__list {
+    list-style: none;
+    line-height: 1.75;
+}
+
+.form__listItem {
+    display: flex;
+}
+
+@media (max-width: 480px) {
+    .form__listItem {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.form__listLabel {
+    width: 175px;
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.form__listInputContainer {
+    min-width: 220px;
+}
+
+.form__listInput {
+    width: 100px;
+    text-align: center;
+    border-radius: 5px;
+}
