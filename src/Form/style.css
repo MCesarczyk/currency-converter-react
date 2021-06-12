@@ -75,3 +75,8 @@
     max-width: 300px;
     text-align: center;
 }
+
+.form__annotation {
+    font-size: 12px;
+    text-align: right;
+}

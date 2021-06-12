@@ -1,32 +1,32 @@
 import { useState } from "react";
 import "./style.css";
 
-const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, buttons }) => {
+const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, resultAnnotation, buttons }) => {
     const currencies = [
         {
             id: "EUR",
-            rate: 4.5481,
+            rate: 4.4723,
             label: "Euro",
             checked: true,
         },
         {
             id: "USD",
-            rate: 3.7978,
+            rate: 3.6759,
             label: "Dolar amerykański"
         },
         {
             id: "AUD",
-            rate: 2.8517,
+            rate: 2.8531,
             label: "Dolar australijski"
         },
         {
             id: "BGN",
-            rate: 2.3254,
+            rate: 2.2866,
             label: "Lew bułgarski"
         },
         {
             id: "HRK",
-            rate: 0.6011,
+            rate: 0.5970,
             label: "Kuna chorwacka"
         }
     ];
@@ -117,7 +117,7 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, bu
                             </li>
                         ))
                         };
-                 </ul>
+                    </ul>
                 }
             </fieldset>
             <fieldset className="form__fieldset">
@@ -125,6 +125,9 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, bu
                 <p className="form__result">
                     {resultLabel}
                     {result}
+                </p>
+                <p className="form__annotation">
+                    {resultAnnotation}
                 </p>
                 {buttons}
             </fieldset>
