@@ -1,3 +1,30 @@
+# Currency-converter
+<img src="https://bsszczytno.pl/wp-content/uploads/2019/06/eKantor-min.jpg" alt="e-kantor" width=500px />
+
+## With this app You're able to convert from PLN to:
+- Euro
+- American Dollars
+- Australian dollars
+- Bulgarian Lew
+- Croatian Kuna
+## Demo:
+https://mcesarczyk.github.io/currency-converter-react/
+## Used technologies:
+- html
+- CSS
+- CSS-Flexbox
+- Media queries
+- JS/ES6+
+- BEM
+- Immutability
+- React.js
+## How to use this app:
+
+<img src="%PUBLIC_URL%/../public/converter_demo.gif" alt="currency-converter demo animation" width=500px />
+
+1. To exchange any amount write it down in field described "Kwota w PLN" and click "Przelicz" button or simply press Enter.
+2. If you want to change actual currency, click on proper radio button next to the name of desired currency.
+3. To clear the form press "Wyczyść formularz" button.
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -13,11 +40,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
