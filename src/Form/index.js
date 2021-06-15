@@ -1,37 +1,9 @@
 import { useState } from "react";
 import Clock from "../Clock";
+import currencies from "./currencies";
 import "./style.css";
 
 const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, resultAnnotation, buttons }) => {
-    const currencies = [
-        {
-            id: "EUR",
-            rate: 4.4723,
-            label: "Euro",
-            checked: true,
-        },
-        {
-            id: "USD",
-            rate: 3.6759,
-            label: "Dolar amerykański"
-        },
-        {
-            id: "AUD",
-            rate: 2.8531,
-            label: "Dolar australijski"
-        },
-        {
-            id: "BGN",
-            rate: 2.2866,
-            label: "Lew bułgarski"
-        },
-        {
-            id: "HRK",
-            rate: 0.5970,
-            label: "Kuna chorwacka"
-        }
-    ];
-
     const [chosenCurrency, setChosenCurrency] = useState("EUR");
 
     const [newAmount, setNewAmount] = useState("");
@@ -109,7 +81,7 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, re
                                 </div>
                                 <input
                                     className="form__input"
-                                    value={currency.rate}
+                                    value={currency.rate.toFixed(4)}
                                     type="number"
                                     min="0.0001"
                                     step="0.0001"
