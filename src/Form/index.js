@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Clock from "../Clock";
 import "./style.css";
 
 const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, resultAnnotation, buttons }) => {
@@ -67,11 +68,7 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, re
         <form className="form" onSubmit={onFormSubmit} onReset={onFormReset}>
             <fieldset className="form__fieldset">
                 <legend className="form__legend">{inputTitle}</legend>
-                <div className="form__clockContainer" >
-                    <p className="form__clockElement">
-                        wtorek, 15 czerwca, 21:27:29
-                    </p>
-                </div>
+                <Clock />
                 <label className="form__inputLabel">
                     <span className="form__inputLabelText">
                         {title}

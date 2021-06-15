@@ -18,18 +18,6 @@
     text-align: center;
 }
 
-.form__clockContainer {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
-}
-
-.form__clockElement {
-    font-family: monospace;
-    font-size: 12px;
-    margin: 0 0 24px 0;
-}
-
 .form__inputLabel {
     display: flex;
     gap: 10px;
