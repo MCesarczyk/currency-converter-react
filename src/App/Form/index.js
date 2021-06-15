@@ -1,5 +1,6 @@
 import { useState } from "react";
-import Clock from "../Clock";
+import Clock from "./Clock";
+import Buttons from "./Buttons";
 import currencies from "./currencies";
 import "./style.css";
 
@@ -103,7 +104,7 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, re
                 <p className="form__annotation">
                     {resultAnnotation}
                 </p>
-                {buttons}
+                <Buttons />
             </fieldset>
         </form>
     )

@@ -1,6 +1,5 @@
 import Container from "./Container";
 import Form from "./Form";
-import Buttons from "./Buttons";
 
 function App() {
 
@@ -13,7 +12,6 @@ function App() {
         resultTitle="Otrzymana kwota"
         resultLabel="Dostajesz:"
         resultAnnotation="*wg kursu z dnia 12/06/2021"
-        buttons={<Buttons />}
       />
     </Container>
   );
