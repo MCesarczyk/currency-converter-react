@@ -11,6 +11,7 @@
 
 .container__element {
     max-width: 620px;
+    min-width: 420px;
     margin: 20px auto;
     padding: 0 20px;
     background-color: #eee;
