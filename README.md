@@ -7,6 +7,7 @@
 - Australian dollars
 - Bulgarian Lew
 - Croatian Kuna
+- Bitcoin
 ## Demo:
 https://mcesarczyk.github.io/currency-converter-react/
 ## Used technologies:
@@ -18,9 +19,11 @@ https://mcesarczyk.github.io/currency-converter-react/
 - BEM
 - Immutability
 - React.js
+- React hooks (useState, useEffect)
+- localStorage management
 ## How to use this app:
 
-<img src="%PUBLIC_URL%/../public/converter_demo.gif" alt="currency-converter demo animation" width=500px />
+<img src="./build/converter_demo.gif" alt="currency-converter demo animation" width=500px />
 
 1. To exchange any amount write it down in field described "Kwota w PLN" and click "Przelicz" button or simply press Enter.
 2. If you want to change actual currency, click on proper radio button next to the name of desired currency.
