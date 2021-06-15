@@ -24,7 +24,7 @@ const Clock = () => {
         );
         const time = myDate.toLocaleTimeString();
 
-        setCustomDateWithTime(`${customDate}, ${time}`);
+        setCustomDateWithTime(`Dzisiaj jest ${customDate}, ${time}`);
     };
 
     return (
