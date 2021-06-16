@@ -2,19 +2,7 @@ import { useEffect, useState } from "react";
 import "./style.css";
 
 const Clock = () => {
-
     const [customDateWithTime, setCustomDateWithTime] = useState("");
-
-    useEffect(() => {
-        getCustomDate();
-        const clockInterval = setInterval(() => {
-            getCustomDate();
-        }, 1000);
-
-        return () => {
-            clearInterval(clockInterval);
-        };
-    }, []);
 
     const getCustomDate = () => {
         const myDate = new Date();
@@ -26,6 +14,17 @@ const Clock = () => {
 
         setCustomDateWithTime(`Dzisiaj jest ${customDate}, ${time}`);
     };
+
+    useEffect(() => {
+        getCustomDate();
+        const clockInterval = setInterval(() => {
+            getCustomDate();
+        }, 1000);
+
+        return () => {
+            clearInterval(clockInterval);
+        };
+    }, []);
 
     return (
         <div className="form__clockContainer" >
