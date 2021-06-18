@@ -1,45 +1,16 @@
 .form__fieldset {
-    width: 100%;
-    max-width: 600px;
-    min-width: 320px;
     border-radius: 20px;
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 16px;
-    padding: 10px 20px;
-    margin-bottom: 20px;
+    padding: 10px;
+    margin: 10px;
 }
 
 .form__legend {
     color: #fff;
     background-color: #133246;
-    padding: 10px 20px;
+    padding: 8px 24px;
     border-style: none;
     border-radius: 20px;
     text-align: center;
-}
-
-.form__inputLabel {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
-}
-
-@media (max-width:480px) {
-    .form__inputLabel {
-        flex-direction: column;
-    }
-}
-
-.form__inputLabelText {
-    min-width: 100px;
-}
-
-.form__input {
-    width: 150px;
-    text-align: center;
-    border-radius: 5px;
-    height: 24px;
 }
 
 .form__list {
@@ -61,18 +32,43 @@
 }
 
 .form__listLabel {
-    width: 175px;
+    width: 150px;
     display: inline-block;
     margin: 0 5px;
 }
 
-.form__listInputContainer {
-    min-width: 220px;
+.form__inputLabel {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width:480px) {
+    .form__inputLabel {
+        flex-direction: column;
+    }
+}
+
+.form__inputLabelText {
+    min-width: 100px;
+}
+
+.form__input {
+    width: 40%;
+    text-align: center;
+    border-radius: 5px;
+    height: 24px;
+}
+
+@media (max-width: 480px) {
+    .form__input {
+        width: 80%;
+    }
 }
 
 .form__result {
-    max-width: 300px;
-    text-align: center;
+    margin-left: 20px;
 }
 
 .form__annotation {
