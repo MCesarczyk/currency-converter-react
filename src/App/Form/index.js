@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Clock from "./Clock";
 import Buttons from "./Buttons";
 import currencies from "./currencies";
@@ -10,6 +10,8 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, re
     const [newAmount, setNewAmount] = useState("");
 
     const [result, setResult] = useState([]);
+
+    const inputRef = useRef(null);
 
     const onCurrencyChange = ({ target }) => {
         setChosenCurrency(target.value);
@@ -29,12 +31,16 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, re
         getExchangeRate();
         calculateResult();
         setNewAmount("");
+        inputRef.current.focus();
     };
 
-    const onFormReset = () => {
+    const onFormReset = (event) => {
+        event.preventDefault();
+
         setNewAmount("");
         setResult("");
         setChosenCurrency("EUR");
+        inputRef.current.focus();
     };
 
     return (
@@ -47,6 +53,7 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, re
                         {title}
                     </InputLabelText>
                     <FormInput
+                        ref={inputRef}
                         value={newAmount}
                         placeholder="Kwota w PLN"
                         type="number"
@@ -70,7 +77,7 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, re
                                         name="chosenCurrency"
                                         id={currency.id}
                                         value={currency.id}
-                                        defaultChecked={currency.checked}
+                                        checked={chosenCurrency === currency.id}
                                         onChange={onCurrencyChange}
                                     />
                                     <ListLabel htmlFor={currency.id}>
