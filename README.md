@@ -1,13 +1,19 @@
 # Currency-converter
-<img src="https://bsszczytno.pl/wp-content/uploads/2019/06/eKantor-min.jpg" alt="e-kantor" width=500px />
+<img src="%PUBLIC_URL%/../build/og_image.jpg" alt="e-kantor" width=500px />
 
-## With this app You're able to convert from PLN to:
+## Short decription
+With this app You're able to convert from PLN to:
 - Euro
 - American Dollars
 - Australian dollars
 - Bulgarian Lew
 - Croatian Kuna
-- Bitcoin
+- Bitcoin  
+
+Additionally the app contains field showing current date and time in format using by your device.
+
+<img src="%PUBLIC_URL%/../src/images/clock_demo.gif" alt="clock demo animation">
+
 ## Demo:
 https://mcesarczyk.github.io/currency-converter-react/
 ## Used technologies:
@@ -19,11 +25,11 @@ https://mcesarczyk.github.io/currency-converter-react/
 - BEM
 - Immutability
 - React.js
-- React hooks (useState, useEffect)
+- React hooks (useState, useEffect, useRef, custom hooks)
 - localStorage management
 ## How to use this app:
 
-<img src="./build/converter_demo.gif" alt="currency-converter demo animation" width=500px />
+<img src="%PUBLIC_URL%/../src/images/converter_demo.gif" alt="currency-converter demo animation" width=500px />
 
 1. To exchange any amount write it down in field described "Kwota w PLN" and click "Przelicz" button or simply press Enter.
 2. If you want to change actual currency, click on proper radio button next to the name of desired currency.
