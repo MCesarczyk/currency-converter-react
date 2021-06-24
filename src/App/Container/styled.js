@@ -12,7 +12,7 @@ export const ContainerBody = styled.div`
 
 export const ContainerElement = styled.div`
     max-width: 480px;
-    min-width: 320px;
+    min-width: 240px;
     margin: 0 auto;
     background-color: #eee;
 `;
