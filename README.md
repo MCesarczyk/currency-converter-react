@@ -1,5 +1,5 @@
 # Currency-converter
-<img src="%PUBLIC_URL%/../build/og_image.jpg" alt="e-kantor" width=500px />
+<img src="%PUBLIC_URL%/../public/og_image.jpg" alt="e-kantor" width=500px />
 
 ## Short decription
 With this app You're able to convert from PLN to:
