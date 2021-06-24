@@ -1,23 +1,15 @@
 import { useState, useEffect } from "react";
 
 export const useCurrentDate = () => {
-    const [customDateWithTime, setCustomDateWithTime] = useState("");
+    const [date, setDate] = useState(new Date());
 
-    const getCustomDate = () => {
-        const myDate = new Date();
-        const customDate = myDate.toLocaleString(
-            undefined,
-            { weekday: "long", day: "numeric", month: "long", time: "numeric" },
-        );
-        const time = myDate.toLocaleTimeString();
-
-        setCustomDateWithTime(`Dzisiaj jest ${customDate}, ${time}`);
+    const getDate = () => {
+        setDate(new Date());
     };
 
     useEffect(() => {
-        getCustomDate();
         const clockInterval = setInterval(() => {
-            getCustomDate();
+            getDate();
         }, 1000);
 
         return () => {
@@ -25,5 +17,14 @@ export const useCurrentDate = () => {
         };
     }, []);
 
-    return customDateWithTime;
+    const customDate = date.toLocaleString(undefined, {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    });
+
+    return customDate;
 };

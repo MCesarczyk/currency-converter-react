@@ -3,12 +3,14 @@ import { ClockContainer, ClockElement } from "./styled";
 
 const Clock = () => {
 
-    const customDateWithTime = useCurrentDate();
+    const customDate = useCurrentDate();
 
     return (
         <ClockContainer>
             <ClockElement>
-                {customDateWithTime}
+                Dzisiaj jest
+                {" "}
+                {customDate}
             </ClockElement>
         </ClockContainer>
     );
