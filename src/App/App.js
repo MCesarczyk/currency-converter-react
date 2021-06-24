@@ -11,7 +11,7 @@ function App() {
         listTitle="Aktualny kurs"
         resultTitle="Otrzymana kwota"
         resultLabel="Dostajesz:"
-        resultAnnotation="*wg kursu z dnia 12/06/2021"
+        resultAnnotation="*wg kursu z dnia 24/06/2021"
       />
     </Container>
   );
