@@ -2,7 +2,7 @@ import { useState } from "react";
 import Clock from "./Clock";
 import Buttons from "./Buttons";
 import currencies from "./currencies";
-import "./style.css";
+import { Fieldset, Legend, InputLabel, InputLabelText, FormInput, List, ListItem, ListLabel, FormResult, FormAnnotation } from "./styled";
 
 const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, resultAnnotation, buttons }) => {
     const [chosenCurrency, setChosenCurrency] = useState("EUR");
@@ -38,17 +38,16 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, re
     };
 
     return (
-        <form className="form" onSubmit={onFormSubmit} onReset={onFormReset}>
-            <fieldset className="form__fieldset">
-                <legend className="form__legend">{inputTitle}</legend>
+        <form onSubmit={onFormSubmit} onReset={onFormReset}>
+            <Fieldset>
+                <Legend>{inputTitle}</Legend>
                 <Clock />
-                <label className="form__inputLabel">
-                    <span className="form__inputLabelText">
+                <InputLabel>
+                    <InputLabelText>
                         {title}
-                    </span>
-                    <input
+                    </InputLabelText>
+                    <FormInput
                         value={newAmount}
-                        className="form__input"
                         placeholder="Kwota w PLN"
                         type="number"
                         min="0.01"
@@ -57,15 +56,15 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, re
                         autoFocus
                         onChange={({ target }) => setNewAmount(target.value)}
                     />
-                </label>
-            </fieldset>
-            <fieldset className="form__fieldset">
-                <legend className="form__legend">{listTitle}</legend>
+                </InputLabel>
+            </Fieldset>
+            <Fieldset>
+                <Legend>{listTitle}</Legend>
                 {
-                    <ul className="form__list">
+                    <List>
                         {currencies.map(currency => (
-                            <li className="form__listItem" key={currency.id} >
-                                <div className="form__listInputContainer">
+                            <ListItem key={currency.id} >
+                                <div>
                                     <input
                                         type="radio"
                                         name="chosenCurrency"
@@ -74,14 +73,11 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, re
                                         defaultChecked={currency.checked}
                                         onChange={onCurrencyChange}
                                     />
-                                    <label
-                                        className="form__listLabel"
-                                        htmlFor={currency.id}>
+                                    <ListLabel htmlFor={currency.id}>
                                         {currency.label}
-                                    </label>
+                                    </ListLabel>
                                 </div>
-                                <input
-                                    className="form__input"
+                                <FormInput
                                     value={currency.rate.toFixed(4)}
                                     type="number"
                                     min="0.0001"
@@ -89,23 +85,23 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, re
                                     required
                                     readOnly
                                 />
-                            </li>
+                            </ListItem>
                         ))
                         };
-                    </ul>
+                    </List>
                 }
-            </fieldset>
-            <fieldset className="form__fieldset">
-                <legend className="form__legend">{resultTitle}</legend>
-                <p className="form__result">
+            </Fieldset>
+            <Fieldset>
+                <Legend>{resultTitle}</Legend>
+                <FormResult>
                     {resultLabel}
                     {result}
-                </p>
-                <p className="form__annotation">
+                </FormResult>
+                <FormAnnotation>
                     {resultAnnotation}
-                </p>
+                </FormAnnotation>
                 <Buttons />
-            </fieldset>
+            </Fieldset>
         </form>
     )
 };
