@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./style.css";
+import { ClockContainer, ClockElement } from "./styled";
 
 const Clock = () => {
     const [customDateWithTime, setCustomDateWithTime] = useState("");
@@ -27,11 +27,11 @@ const Clock = () => {
     }, []);
 
     return (
-        <div className="form__clockContainer" >
-            <p className="form__clockElement">
+        <ClockContainer>
+            <ClockElement>
                 {customDateWithTime}
-            </p>
-        </div>
+            </ClockElement>
+        </ClockContainer>
     );
 };
 

@@ -1,14 +1,14 @@
-import "./style.css";
+import { ButtonsContainer, Button } from "./styled";
 
 const Buttons = () => (
-    <div className="buttons">
-        <button className="buttons__button">
+    <ButtonsContainer>
+        <Button>
             Przelicz
-        </button>
-        <button className="buttons__button" type="reset">
+        </Button>
+        <Button type="reset">
             Wyczyść formularz
-        </button>
-    </div>
+        </Button>
+    </ButtonsContainer>
 );
 
 export default Buttons;
