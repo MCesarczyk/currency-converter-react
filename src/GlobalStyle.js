@@ -1,3 +1,7 @@
+import { createGlobalStyle } from "styled-components";
+
+export const GlobalStyle = createGlobalStyle`
+
 html {
   box-sizing: border-box;
 }
@@ -8,9 +12,8 @@ html {
 
 body {
   font-family: 'Ubuntu', sans-serif;
-  color: #133246;
   background-size: cover;
   background-position: center;
   background-color: #ddd;
   background-attachment: fixed;
-}
+}`;

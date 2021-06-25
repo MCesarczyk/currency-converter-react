@@ -94,7 +94,7 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, re
                                 />
                             </ListItem>
                         ))
-                        };
+                        }
                     </List>
                 }
             </Fieldset>
