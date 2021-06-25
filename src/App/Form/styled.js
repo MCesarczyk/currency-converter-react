@@ -7,8 +7,8 @@ export const Fieldset = styled.fieldset`
 `;
 
 export const Legend = styled.legend`
-    color: #fff;
-    background-color: ${({theme}) => theme.color.primary};
+    color: ${({ theme }) => theme.color.elementsText};
+    background-color: ${({ theme }) => theme.color.elementsBackground};
     padding: 8px 24px;
     border-style: none;
     border-radius: 20px;

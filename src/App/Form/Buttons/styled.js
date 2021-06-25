@@ -12,8 +12,8 @@ export const ButtonsContainer = styled.div`
 
 export const Button = styled.button`
     min-width: 165px;
-    color: #ebe6dc;
-    background-color: ${({theme}) => theme.color.primary};
+    color: ${({ theme }) => theme.color.elementsText};
+    background-color: ${({ theme }) => theme.color.elementsBackground};
     display: inline-block;
     border-radius: 20px;
     padding: 5px 10px;
