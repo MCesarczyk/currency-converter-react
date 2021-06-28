@@ -21,7 +21,7 @@ export const InputLabel = styled.label`
     align-items: center;
     justify-content: center;
 
-    @media (max-width:480px) {
+    @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}) {
         flex-direction: column;
     }
 `;
@@ -36,7 +36,7 @@ export const FormInput = styled.input`
     border-radius: 5px;
     height: 24px;
 
-    @media (max-width: 480px) {
+    @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}) {
         width: 80%;
     }
 `;
@@ -51,7 +51,7 @@ export const ListItem = styled.li`
     display: flex;
     justify-content: space-evenly;
 
-    @media (max-width: 480px) {
+    @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}) {
             flex-direction: column;
             align-items: center;
     }
