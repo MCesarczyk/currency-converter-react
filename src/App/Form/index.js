@@ -4,12 +4,13 @@ import Buttons from "./Buttons";
 import currencies from "./currencies";
 import { Fieldset, Legend, InputLabel, InputLabelText, FormInput, List, ListItem, ListLabel, FormResult, FormAnnotation } from "./styled";
 
-const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, resultAnnotation, buttons }) => {
-    const [currentCurrencies, setCurrentCurrencies] = useState([]);
+const Form = ({ title, inputTitle, listTitle, resultTitle, resultLabel }) => {
+    const [currentCurrencies, setCurrentCurrencies] = useState(currencies);
+    const [checkingDate, setCheckingDate] = useState("24/06/2021");
 
-    useEffect(() => {
-        setCurrentCurrencies(currencies);
-    }, []);
+    // useEffect(() => {
+    //     setCurrentCurrencies(currencies);
+    // }, []);
 
     const [chosenCurrency, setChosenCurrency] = useState("EUR");
 
@@ -111,7 +112,7 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, re
                     {result}
                 </FormResult>
                 <FormAnnotation>
-                    {resultAnnotation}
+                    *wg kursu z dnia {checkingDate}
                 </FormAnnotation>
                 <Buttons />
             </Fieldset>
