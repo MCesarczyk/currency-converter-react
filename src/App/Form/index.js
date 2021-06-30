@@ -1,10 +1,16 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Clock from "./Clock";
 import Buttons from "./Buttons";
 import currencies from "./currencies";
 import { Fieldset, Legend, InputLabel, InputLabelText, FormInput, List, ListItem, ListLabel, FormResult, FormAnnotation } from "./styled";
 
 const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, resultAnnotation, buttons }) => {
+    const [currentCurrencies, setCurrentCurrencies] = useState([]);
+
+    useEffect(() => {
+        setCurrentCurrencies(currencies);
+    }, []);
+
     const [chosenCurrency, setChosenCurrency] = useState("EUR");
 
     const [newAmount, setNewAmount] = useState("");
@@ -18,7 +24,7 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, re
     };
 
     const getExchangeRate = () => {
-        return (currencies.find(({ id }) => id === chosenCurrency).rate);
+        return (currentCurrencies.find(({ id }) => id === chosenCurrency).rate);
     };
 
     const calculateResult = () => {
@@ -69,7 +75,7 @@ const Form = ({ title, inputTitle, listTitle, list, resultTitle, resultLabel, re
                 <Legend>{listTitle}</Legend>
                 {
                     <List>
-                        {currencies.map(currency => (
+                        {currentCurrencies.map(currency => (
                             <ListItem key={currency.id} >
                                 <div>
                                     <input
