@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useCurrentRates } from "./useCurrentRates";
 import Clock from "./Clock";
 import Buttons from "./Buttons";
@@ -25,11 +25,13 @@ const Form = ({
 }) => {
 
     const ratesData = useCurrentRates();
+
+    const success = ratesData.success;
+    const error = ratesData.error;
+    const checkingDate = ratesData.date;
+    const currentRates = ratesData.rates;
+
     console.log(ratesData);
-
-    const [checkingDate, setCheckingDate] = useState("24/06/2021");
-
-    const [currentCurrencies, setCurrentCurrencies] = useState();
 
     const [chosenCurrency, setChosenCurrency] = useState("EUR");
 
@@ -68,7 +70,7 @@ const Form = ({
         setChosenCurrency("EUR");
         inputRef.current.focus();
     };
-
+    
     return (
         <form onSubmit={onFormSubmit} onReset={onFormReset}>
             <Fieldset>
@@ -93,36 +95,53 @@ const Form = ({
             </Fieldset>
             <Fieldset>
                 <Legend>{listTitle}</Legend>
-                {
-                    <List>
-                        {currencies.map(currency => (
-                            <ListItem key={currency.id} >
-                                <div>
-                                    <input
-                                        type="radio"
-                                        name="chosenCurrency"
-                                        id={currency.id}
-                                        value={currency.id}
-                                        checked={chosenCurrency === currency.id}
-                                        onChange={onCurrencyChange}
+                {error === true ? (
+                    <div>
+                        something bad happened :O
+                    </div>
+                ) : (success === false ? (
+                    <div>
+                        loading... please wait
+                    </div>
+                ) : (
+                    <>
+                        {/* <List>
+                            {Object.keys(currentRates).map(([key, value]) => (
+                                <ListItem>
+                                    {key}: {value.toFixed(4)}
+                                </ListItem>
+                            ))}
+                        </List> */}
+                        <List>
+                            {currencies.map(currency => (
+                                <ListItem key={currency.id} >
+                                    <div>
+                                        <input
+                                            type="radio"
+                                            name="chosenCurrency"
+                                            id={currency.id}
+                                            value={currency.id}
+                                            checked={chosenCurrency === currency.id}
+                                            onChange={onCurrencyChange}
+                                        />
+                                        <ListLabel htmlFor={currency.id}>
+                                            {currency.label}
+                                        </ListLabel>
+                                    </div>
+                                    <FormInput
+                                        value={currency.rate.toFixed(4)}
+                                        type="number"
+                                        min="0.0001"
+                                        step="0.0001"
+                                        required
+                                        readOnly
                                     />
-                                    <ListLabel htmlFor={currency.id}>
-                                        {currency.label}
-                                    </ListLabel>
-                                </div>
-                                <FormInput
-                                    value={currency.rate.toFixed(4)}
-                                    type="number"
-                                    min="0.0001"
-                                    step="0.0001"
-                                    required
-                                    readOnly
-                                />
-                            </ListItem>
-                        ))
-                        }
-                    </List>
-                }
+                                </ListItem>
+                            ))
+                            }
+                        </List>
+                    </>
+                ))}
             </Fieldset>
             <Fieldset>
                 <Legend>{resultTitle}</Legend>
@@ -137,6 +156,7 @@ const Form = ({
             </Fieldset>
         </form>
     )
-};
+}
+;
 
 export default Form;
