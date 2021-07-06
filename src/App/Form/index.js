@@ -1,16 +1,35 @@
 import { useEffect, useRef, useState } from "react";
+import { useCurrentRates } from "./useCurrentRates";
 import Clock from "./Clock";
 import Buttons from "./Buttons";
 import currencies from "./currencies";
-import { Fieldset, Legend, InputLabel, InputLabelText, FormInput, List, ListItem, ListLabel, FormResult, FormAnnotation } from "./styled";
+import {
+    Fieldset,
+    Legend,
+    InputLabel,
+    InputLabelText,
+    FormInput,
+    List,
+    ListItem,
+    ListLabel,
+    FormResult,
+    FormAnnotation
+} from "./styled";
 
-const Form = ({ title, inputTitle, listTitle, resultTitle, resultLabel }) => {
-    const [currentCurrencies, setCurrentCurrencies] = useState(currencies);
+const Form = ({
+    title,
+    inputTitle,
+    listTitle,
+    resultTitle,
+    resultLabel
+}) => {
+
+    const ratesData = useCurrentRates();
+    console.log(ratesData);
+
     const [checkingDate, setCheckingDate] = useState("24/06/2021");
 
-    // useEffect(() => {
-    //     setCurrentCurrencies(currencies);
-    // }, []);
+    const [currentCurrencies, setCurrentCurrencies] = useState();
 
     const [chosenCurrency, setChosenCurrency] = useState("EUR");
 
@@ -25,7 +44,7 @@ const Form = ({ title, inputTitle, listTitle, resultTitle, resultLabel }) => {
     };
 
     const getExchangeRate = () => {
-        return (currentCurrencies.find(({ id }) => id === chosenCurrency).rate);
+        return (currencies.find(({ id }) => id === chosenCurrency).rate);
     };
 
     const calculateResult = () => {
@@ -76,7 +95,7 @@ const Form = ({ title, inputTitle, listTitle, resultTitle, resultLabel }) => {
                 <Legend>{listTitle}</Legend>
                 {
                     <List>
-                        {currentCurrencies.map(currency => (
+                        {currencies.map(currency => (
                             <ListItem key={currency.id} >
                                 <div>
                                     <input
