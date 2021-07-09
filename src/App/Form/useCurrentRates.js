@@ -12,7 +12,7 @@ export const useCurrentRates = () => {
         const getRates = () => {
             const request = new XMLHttpRequest();
             const requestURL = 'https://api.exchangerate.host/latest';
-            const base = `base=${ratesData.base}`;
+            const base = `${ratesData.base}`;
 
             request.open('GET', requestURL + "?" + base, true);
             request.responseType = 'json';
