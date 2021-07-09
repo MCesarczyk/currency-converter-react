@@ -23,13 +23,12 @@ const Form = ({
     resultTitle,
     resultLabel
 }) => {
-
     const ratesData = useCurrentRates();
 
-    const success = ratesData.success;
-    const error = ratesData.error;
-    const checkingDate = ratesData.date;
-    const currentRates = ratesData.rates;
+    const status = ratesData.status;
+    const base = ratesData.base;
+    const date = ratesData.date;
+    const rates = ratesData.rates;
 
     console.log(ratesData);
 
@@ -70,7 +69,10 @@ const Form = ({
         setChosenCurrency("EUR");
         inputRef.current.focus();
     };
-    
+
+    const wantedCurrencies = currencies.map(({ id }) => id);
+    console.log(wantedCurrencies);
+
     return (
         <form onSubmit={onFormSubmit} onReset={onFormReset}>
             <Fieldset>
@@ -95,11 +97,11 @@ const Form = ({
             </Fieldset>
             <Fieldset>
                 <Legend>{listTitle}</Legend>
-                {error === true ? (
+                {status === "error" ? (
                     <div>
                         something bad happened :O
                     </div>
-                ) : (success === false ? (
+                ) : (status === "loading" ? (
                     <div>
                         loading... please wait
                     </div>
@@ -150,13 +152,13 @@ const Form = ({
                     {result}
                 </FormResult>
                 <FormAnnotation>
-                    *wg kursu z dnia {checkingDate}
+                    *wg kursu z dnia {date}
                 </FormAnnotation>
                 <Buttons />
             </Fieldset>
         </form>
     )
 }
-;
+    ;
 
 export default Form;
