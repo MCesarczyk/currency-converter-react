@@ -10,7 +10,7 @@ function App() {
         title="Wpłacasz:"
         listTitle="Aktualny kurs"
         resultTitle="Otrzymana kwota"
-        resultLabel="Dostajesz:"
+        resultLabel="Dostajesz: "
       />
     </Container>
   );

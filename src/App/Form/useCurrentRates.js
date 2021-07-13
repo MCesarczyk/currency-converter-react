@@ -12,14 +12,17 @@ export const useCurrentRates = () => {
         const getRates = () => {
             const request = new XMLHttpRequest();
             const requestURL = 'https://api.exchangerate.host/latest';
-            const base = `${ratesData.base}`;
 
-            request.open('GET', requestURL + "?" + base, true);
+            request.open('GET', requestURL + "?base=" + ratesData.base);
             request.responseType = 'json';
+
+            request.onerror = () => {
+                setRatesData({ status: "error" });
+            };
 
             request.onload = () => {
                 const { date, rates } = request.response;
-                setRatesData({ status: "success", base, date, rates });
+                setRatesData({ status: "success", date, rates });
             };
 
             request.send(null);
