@@ -1,6 +1,8 @@
 # Currency-converter
 <img src="%PUBLIC_URL%/../public/og_image.jpg" alt="e-kantor" width=500px />
 
+## Demo:
+https://mcesarczyk.github.io/currency-converter-react/
 ## Short decription
 With this app You're able to convert from PLN to:
 - Euro
@@ -22,8 +24,6 @@ And when error is occur you get information too.
 
 <img src="%PUBLIC_URL%/../src/images/error_handling.gif" alt="clock demo animation">
 
-## Demo:
-https://mcesarczyk.github.io/currency-converter-react/
 ## Used technologies:
 - html
 - CSS
