@@ -24,11 +24,6 @@ const currencies = [
         id: "HRK",
         rate: 0.6041,
         label: "Kuna chorwacka"
-    },
-    {
-        id: "BTC",
-        rate: 1299111.81,
-        label: "Bitcoin"
     }
 ];
 
