@@ -4,7 +4,7 @@
 ## Demo:
 https://mcesarczyk.github.io/currency-converter-react/
 ## Short decription
-With this app You're able to convert from PLN to:
+With this app you're able to convert from PLN to:
 - Euro
 - American Dollars
 - Australian dollars
