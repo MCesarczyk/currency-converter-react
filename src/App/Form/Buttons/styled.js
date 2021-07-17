@@ -11,7 +11,6 @@ export const ButtonsContainer = styled.div`
 `;
 
 export const Button = styled.button`
-    min-width: 165px;
     color: ${({ theme }) => theme.color.elementsText};
     background-color: ${({ theme }) => theme.color.elementsBackground};
     display: inline-block;

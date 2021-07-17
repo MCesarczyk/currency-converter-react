@@ -6,7 +6,7 @@ const Buttons = () => (
             Przelicz
         </Button>
         <Button type="reset">
-            Wyczyść formularz
+            Wyczyść
         </Button>
     </ButtonsContainer>
 );
