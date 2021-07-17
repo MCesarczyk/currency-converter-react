@@ -16,8 +16,12 @@ export const Button = styled.button`
     display: inline-block;
     border-radius: 20px;
     padding: 5px 10px;
-    margin: 10px;
+    margin: 5px 10px;
     width: 45%;
+
+    @media (max-width: ${({theme}) => theme.breakpoint.mobileMax}) {
+        width: 100%;
+    }
 
     &:hover {
         background-color: hsl(210, 40%, 30%);
