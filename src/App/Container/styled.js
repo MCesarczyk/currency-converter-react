@@ -2,8 +2,7 @@ import styled from "styled-components";
 import background from "../../images/background.png";
 
 export const ContainerBody = styled.div`
-    max-width: 1024px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     background-image: url("${background}");
     background-size: cover;
     background-position: center;
@@ -12,7 +11,7 @@ export const ContainerBody = styled.div`
 `;
 
 export const ContainerElement = styled.div`
-    max-width: ${({ theme }) => theme.breakpoint.mobileMax};
+    max-width: 360px;
     min-width: 240px;
     margin: 0 auto;
     background-color: #eee;
