@@ -2,7 +2,6 @@ import { useCurrentDate } from "./useCurrentDate";
 import { ClockContainer, ClockElement } from "./styled";
 
 const Clock = () => {
-
     const customDate = useCurrentDate();
 
     return (
