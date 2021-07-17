@@ -21,8 +21,8 @@ export const useCurrentRates = () => {
             };
 
             request.onload = () => {
-                const { date, rates } = request.response;
-                setRatesData({ status: "success", date, rates });
+                const { base, date, rates } = request.response;
+                setRatesData({ status: "success", base, date, rates });
             };
 
             request.send(null);
