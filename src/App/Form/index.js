@@ -134,9 +134,7 @@ const Form = ({
                     {currencies[currencies.findIndex(({ id }) => id === key)].label}
                   </ListLabel>
                 </div>
-                {/* <ListLabel> */}
-                  {(1 / (Object.values(filteredRates)[value])).toFixed(4)}
-                {/* </ListLabel> */}
+                {(1 / (Object.values(filteredRates)[value])).toFixed(4)}
               </ListItem>
             ))
             }

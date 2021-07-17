@@ -50,11 +50,6 @@ export const List = styled.ul`
 export const ListItem = styled.li`
     display: flex;
     justify-content: space-evenly;
-
-    @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}) {
-            flex-direction: column;
-            align-items: center;
-    }
 `;
 
 export const ListLabel = styled.label`
