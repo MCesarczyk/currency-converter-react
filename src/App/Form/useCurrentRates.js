@@ -10,22 +10,30 @@ export const useCurrentRates = () => {
 
     useEffect(() => {
         const getRates = () => {
-            const request = new XMLHttpRequest();
             const requestURL = 'https://api.exchangerate.host/latest';
 
-            request.open('GET', requestURL + "?base=" + ratesData.base);
-            request.responseType = 'json';
-
-            request.onerror = () => {
-                setRatesData({ status: "error" });
-            };
-
-            request.onload = () => {
-                const { base, date, rates } = request.response;
-                setRatesData({ status: "success", base, date, rates });
-            };
-
-            request.send(null);
+            fetch(requestURL + "?base=" + ratesData.base)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP Error! Status: ${response.status}`);
+                    }
+                    return response;
+                })
+                .then(response => response.json())
+                .then(
+                    response => {
+                        setRatesData({
+                            status: "success",
+                            base: response.base,
+                            date: response.date,
+                            rates: response.rates
+                        });
+                    }
+                )
+                .catch(error => {
+                    setRatesData({ status: "error" });
+                    console.error(error.message);
+                })
         };
 
         setTimeout(getRates, 2_000);
