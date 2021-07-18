@@ -19,15 +19,15 @@ export const Button = styled.button`
     margin: 5px 10px;
     width: 45%;
 
-    @media (max-width: ${({theme}) => theme.breakpoint.mobileMax}) {
+    @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}) {
         width: 100%;
     }
 
     &:hover {
-        background-color: hsl(210, 40%, 30%);
+        filter: brightness(110%);
     }
 
     &:active {
-        background-color: hsl(210, 40%, 40%);
+        filter: brightness(120%);
     }
 `;

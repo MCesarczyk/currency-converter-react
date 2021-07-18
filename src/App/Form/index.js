@@ -25,19 +25,13 @@ const Form = ({
   resultLabel
 }) => {
   const ratesData = useCurrentRates();
-
   const status = ratesData.status;
   const date = ratesData.date;
   const rates = ratesData.rates;
-
   const [checkingDate, setCheckingDate] = useState("");
-
   const [chosenCurrency, setChosenCurrency] = useState("EUR");
-
   const [newAmount, setNewAmount] = useState("");
-
   const [result, setResult] = useState([]);
-
   const inputRef = useRef(null);
 
   const onCurrencyChange = ({ target }) => {
@@ -45,7 +39,7 @@ const Form = ({
   };
 
   const getExchangeRate = () => {
-    return (currencies.find(({ id }) => id === chosenCurrency).rate);
+    return currencies.find(({ id }) => id === chosenCurrency).rate;
   };
 
   const calculateResult = () => {
@@ -121,19 +115,17 @@ const Form = ({
           <List>
             {Object.keys(filteredRates).map((key, value) => (
               <ListItem key={key} >
-                <div>
-                  <input
-                    type="radio"
-                    name="chosenCurrency"
-                    id={key}
-                    value={key}
-                    checked={chosenCurrency === key}
-                    onChange={onCurrencyChange}
-                  />
-                  <ListLabel htmlFor={key}>
-                    {currencies[currencies.findIndex(({ id }) => id === key)].label}
-                  </ListLabel>
-                </div>
+                <input
+                  type="radio"
+                  name="chosenCurrency"
+                  id={key}
+                  value={key}
+                  checked={chosenCurrency === key}
+                  onChange={onCurrencyChange}
+                />
+                <ListLabel htmlFor={key}>
+                  {currencies[currencies.findIndex(({ id }) => id === key)].label}
+                </ListLabel>
                 {(1 / (Object.values(filteredRates)[value])).toFixed(4)}
               </ListItem>
             ))
