@@ -18,8 +18,8 @@ import {
 } from "./styled";
 
 const Form = ({
-  title,
   inputTitle,
+  inputLabel,
   listTitle,
   resultTitle,
   resultLabel
@@ -85,7 +85,7 @@ const Form = ({
         <Clock />
         <InputLabel>
           <InputLabelText>
-            {title}
+            {inputLabel}
           </InputLabelText>
           <FormInput
             ref={inputRef}

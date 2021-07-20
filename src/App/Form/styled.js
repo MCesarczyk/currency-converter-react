@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Fieldset = styled.fieldset`
     border-radius: 20px;
     padding: 10px;
-    margin: 10px;
+    margin-bottom: 10px;
 `;
 
 export const Legend = styled.legend`

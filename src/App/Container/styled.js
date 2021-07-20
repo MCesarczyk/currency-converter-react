@@ -13,5 +13,6 @@ export const ContainerElement = styled.div`
     max-width: 360px;
     min-width: 240px;
     margin: 0 auto;
+    padding: 10px;
     background-color: ${({ theme }) => theme.color.innerContainerBackground};
 `;
