@@ -7,7 +7,7 @@ const languages = {
     resultLabel: "You get: "
   },
   PL: {
-    headerTitle: "e-Kantor",
+    inputTitle: "e-Kantor",
     inputLabel: "Wpłacasz:",
     listTitle: "Aktualny kurs",
     resultTitle: "Otrzymana kwota",

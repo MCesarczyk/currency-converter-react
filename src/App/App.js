@@ -16,11 +16,11 @@ function App() {
         setLanguage={setLanguage}
       />
       <Form
-        inputTitle={languages.EN.inputTitle}
-        inputLabel={languages.EN.inputLabel}
-        listTitle={languages.EN.listTitle}
-        resultTitle={languages.EN.resultTitle}
-        resultLabel={languages.EN.resultLabel}
+        inputTitle={languages[language].inputTitle}
+        inputLabel={languages[language].inputLabel}
+        listTitle={languages[language].listTitle}
+        resultTitle={languages[language].resultTitle}
+        resultLabel={languages[language].resultLabel}
       />
     </Container>
   );
