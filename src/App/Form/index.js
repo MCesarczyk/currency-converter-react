@@ -129,7 +129,7 @@ const Form = ({
                   onChange={onCurrencyChange}
                 />
                 <ListLabel htmlFor={key}>
-                  {currencies[currencies.findIndex(({ id }) => id === key)].label}
+                  {currencies[currencies.findIndex(({ id }) => id === key)].label[language]}
                 </ListLabel>
                 {(1 / (Object.values(filteredRates)[value])).toFixed(4)}
               </ListItem>

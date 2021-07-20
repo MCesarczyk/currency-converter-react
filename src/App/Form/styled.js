@@ -31,7 +31,7 @@ export const InputLabelText = styled.span`
 `;
 
 export const FormInput = styled.input`
-    width: 40%;
+    width: 50%;
     text-align: center;
     border-radius: 5px;
     height: 24px;
@@ -50,6 +50,7 @@ export const List = styled.ul`
 export const ListItem = styled.li`
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
 `;
 
 export const ListLabel = styled.label`
