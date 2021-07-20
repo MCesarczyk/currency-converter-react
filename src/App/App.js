@@ -3,10 +3,11 @@ import Container from "./Container";
 import Form from "./Form";
 import Switcher from "./Switcher";
 import languages from "./languages";
+import { useLocalStorageState } from "./useLocalStorageState";
 
 function App() {
 
-  const [language, setLanguage] = useState("EN");
+  const [language, setLanguage] = useLocalStorageState("language", "EN");
 
     return (
     <Container>
