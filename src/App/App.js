@@ -1,13 +1,19 @@
+import { useState } from "react";
 import Container from "./Container";
 import Form from "./Form";
 import Switcher from "./Switcher";
 import languages from "./languages";
 
 function App() {
-  return (
+
+  const [language, setLanguage] = useState("EN");
+
+    return (
     <Container>
       <Switcher
         languages={languages}
+        language={language}
+        setLanguage={setLanguage}
       />
       <Form
         inputTitle={languages.EN.inputTitle}
