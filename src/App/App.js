@@ -16,6 +16,8 @@ function App() {
         setLanguage={setLanguage}
       />
       <Form
+        languages={languages}
+        language={language}
         inputTitle={languages[language].inputTitle}
         inputLabel={languages[language].inputLabel}
         listTitle={languages[language].listTitle}

@@ -16,8 +16,11 @@ import {
   FormResult,
   FormAnnotation
 } from "./styled";
+import languages from "../languages";
 
 const Form = ({
+  languages,
+  language,
   inputTitle,
   inputLabel,
   listTitle,
@@ -52,7 +55,7 @@ const Form = ({
     getExchangeRate();
     calculateResult();
     setNewAmount("");
-    setCheckingDate(`*wg kursu z dnia: ${date}`);
+    setCheckingDate(`${languages[language].dateLabel}${date}`);
     inputRef.current.focus();
   };
 
@@ -90,7 +93,7 @@ const Form = ({
           <FormInput
             ref={inputRef}
             value={newAmount}
-            placeholder="Kwota w PLN"
+            placeholder={languages[language].inputPlaceholder}
             type="number"
             min="0.01"
             step="any"
