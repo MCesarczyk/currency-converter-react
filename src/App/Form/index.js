@@ -85,7 +85,10 @@ const Form = ({
     <form onSubmit={onFormSubmit} onReset={onFormReset}>
       <Fieldset>
         <Legend>{inputTitle}</Legend>
-        <Clock />
+        <Clock 
+          languages={languages}
+          language={language}
+        />
         <InputLabel>
           <InputLabelText>
             {inputLabel}
@@ -105,14 +108,13 @@ const Form = ({
       </Fieldset>
       <Fieldset>
         <Legend>{listTitle}</Legend>
-        {status === "error" ? (
+        {status === "loading" ? (
           <div>
-            Unable to fetch data...
-            please check your internet connection.
+            {languages[language].loadingMessage}
           </div>
-        ) : (status === "loading" ? (
+        ) : (status === "error" ? (
           <div>
-            Loading... please wait
+            {languages[language].errorMessage}
           </div>
         ) : (
           <List>

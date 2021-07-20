@@ -10,7 +10,7 @@ export const useCurrentRates = () => {
 
     useEffect(() => {
         const getRates = () => {
-            const requestURL = 'https://api.exchangerate.host/latest';
+            const requestURL = 'https://api.exchangerate.chost/latest';
 
             fetch(requestURL + "?base=" + ratesData.base)
                 .then(response => {

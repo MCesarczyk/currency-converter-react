@@ -1,15 +1,15 @@
 import { useCurrentDate } from "./useCurrentDate";
 import { ClockContainer, ClockElement } from "./styled";
 
-const Clock = () => {
+const Clock = ({ languages, language }) => {
     const date = useCurrentDate();
 
     return (
         <ClockContainer>
             <ClockElement>
-                Dzisiaj jest
+                {languages[language].clockLabel}
                 {" "}
-                {date.toLocaleString(undefined, {
+                {date.toLocaleString(language, {
                     weekday: "long",
                     day: "numeric",
                     month: "long",
