@@ -16,7 +16,6 @@ import {
   FormResult,
   FormAnnotation
 } from "./styled";
-import languages from "../languages";
 
 const Form = ({
   languages,
