@@ -20,7 +20,7 @@ import {
 const Form = ({
   languages,
   language,
-  inputTitle,
+  headerTitle,
   inputLabel,
   listTitle,
   resultTitle,
@@ -83,7 +83,7 @@ const Form = ({
   return (
     <form onSubmit={onFormSubmit} onReset={onFormReset}>
       <Fieldset>
-        <Legend>{inputTitle}</Legend>
+        <Legend>{headerTitle}</Legend>
         <Clock 
           languages={languages}
           language={language}

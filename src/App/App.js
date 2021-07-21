@@ -8,7 +8,9 @@ function App() {
 
   const [language, setLanguage] = useLocalStorageState("language", "EN");
 
-    return (
+  document.title = languages[language].headerTitle;
+
+  return (
     <Container>
       <Switcher
         languages={languages}
@@ -18,7 +20,7 @@ function App() {
       <Form
         languages={languages}
         language={language}
-        inputTitle={languages[language].inputTitle}
+        headerTitle={languages[language].headerTitle}
         inputLabel={languages[language].inputLabel}
         listTitle={languages[language].listTitle}
         resultTitle={languages[language].resultTitle}

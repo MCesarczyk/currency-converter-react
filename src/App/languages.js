@@ -1,6 +1,6 @@
 const languages = {
   EN: {
-    inputTitle: "Currency converter",
+    headerTitle: "Currency converter",
     inputLabel: "You give:",
     inputPlaceholder: "Amount in PLN",
     listTitle: "Current rate",
@@ -13,7 +13,7 @@ const languages = {
     dateLabel: "*rate valid on: "
   },
   PL: {
-    inputTitle: "e-Kantor",
+    headerTitle: "e-Kantor",
     inputLabel: "Wpłacasz:",
     inputPlaceholder: "Kwota w PLN",
     listTitle: "Aktualny kurs",
