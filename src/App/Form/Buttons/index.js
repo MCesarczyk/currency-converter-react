@@ -1,12 +1,12 @@
 import { ButtonsContainer, Button } from "./styled";
 
-const Buttons = () => (
+const Buttons = ({ languages, language }) => (
     <ButtonsContainer>
         <Button>
-            Przelicz
+            {languages[language].mainButtonLabel}
         </Button>
         <Button type="reset">
-            Wyczyść
+            {languages[language].resetButtonLabel}
         </Button>
     </ButtonsContainer>
 );

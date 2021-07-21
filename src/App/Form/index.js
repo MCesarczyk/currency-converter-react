@@ -146,7 +146,10 @@ const Form = ({
         <FormAnnotation>
           {checkingDate}
         </FormAnnotation>
-        <Buttons />
+        <Buttons 
+          languages={languages}
+          language={language}
+        />
       </Fieldset>
     </form>
   )
