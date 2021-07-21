@@ -1,6 +1,6 @@
 const languages = {
   EN: {
-    inputTitle: "Currency calculator",
+    inputTitle: "Currency converter",
     inputLabel: "You give:",
     inputPlaceholder: "Amount in PLN",
     listTitle: "Current rate",

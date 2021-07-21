@@ -1,6 +1,6 @@
 import { LanguageButtons } from "./styled";
 
-const Switcher = ({ languages, language, setLanguage }) => {
+const Switcher = ({ languages, setLanguage }) => {
 
     const onLanguageChange = ({ target }) => {
         setLanguage(target.value);
