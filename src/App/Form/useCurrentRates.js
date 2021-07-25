@@ -19,21 +19,20 @@ export const useCurrentRates = () => {
                     throw new Error(`HTTP Error! Status: ${response.status}`);
                 }
 
-                response = await response.json();
-                
+                return await response.json();
+            };
+
+            dataFetch().then((response) => {
                 setRatesData({
                     status: "success",
                     base: response.base,
                     date: response.date,
                     rates: response.rates
                 });
-            };
-
-            dataFetch()
-                .catch(error => {
-                    setRatesData({ status: "error" });
-                    console.error(error.message);
-                });
+            }).catch(error => {
+                setRatesData({ status: "error" });
+                console.error(error.message);
+            });
         };
 
         setTimeout(getRates, 2_000);
