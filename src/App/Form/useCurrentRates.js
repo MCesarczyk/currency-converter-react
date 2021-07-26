@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 export const useCurrentRates = () => {
@@ -12,27 +13,19 @@ export const useCurrentRates = () => {
         const getRates = () => {
             const requestURL = 'https://api.exchangerate.host/latest';
 
-            const dataFetch = async () => {
-                let response = await fetch(requestURL + "?base=" + ratesData.base);
-
-                if (!response.ok) {
-                    throw new Error(`HTTP Error! Status: ${response.status}`);
-                }
-
-                return await response.json();
-            };
-
-            dataFetch().then((response) => {
-                setRatesData({
-                    status: "success",
-                    base: response.base,
-                    date: response.date,
-                    rates: response.rates
+            axios.get(requestURL + "?base=" + ratesData.base)
+                .then((response) => {
+                    setRatesData({
+                        status: "success",
+                        base: response.data.base,
+                        date: response.data.date,
+                        rates: response.data.rates
+                    });
+                })
+                .catch(error => {
+                    setRatesData({ status: "error" });
+                    console.error(error.message);
                 });
-            }).catch(error => {
-                setRatesData({ status: "error" });
-                console.error(error.message);
-            });
         };
 
         setTimeout(getRates, 2_000);
