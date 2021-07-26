@@ -8,8 +8,8 @@ const languages = {
     resultLabel: "You get: ",
     clockLabel: "Today is ",
     loadingMessage: "Loading... please wait",
-    errorMessage: "Unable to fetch data...\
-    please check your internet connection.",
+    errorMessage: "Unable to fetch data...\n" +
+    "please check your internet connection.",
     mainButtonLabel: "Calculate",
     resetButtonLabel: "Reset",
     dateLabel: "*rate valid on: "
@@ -23,8 +23,8 @@ const languages = {
     resultLabel: "Dostajesz: ",
     clockLabel: "Dzisiaj jest ",
     loadingMessage: "Pobieranie danych...",
-    errorMessage: "Nie udało się pobrać danych...\
-    sprawdź swoje połączenie internetowe",
+    errorMessage: "Nie udało się pobrać danych...\n" +
+    "sprawdź swoje połączenie internetowe",
     mainButtonLabel: "Przelicz",
     resetButtonLabel: "Wyczyść",
     dateLabel: "*wg kursu z dnia: "
