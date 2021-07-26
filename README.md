@@ -44,7 +44,7 @@ You can easily change interface language if you want:
 - user friendly error handling
 ## How to use this app:
 
-<img src="./public/converterDemo.gif" alt="currency-converter demo animation" width=500px />
+<img src="./public/converterDemo.gif" alt="currency-converter demo animation" />
 
 1. To exchange any amount write it down in field described "Kwota w PLN" and click "Przelicz" button or simply press Enter.
 1. If you want to change actual currency, click on proper radio button next to the name of desired currency.
