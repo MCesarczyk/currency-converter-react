@@ -24,6 +24,10 @@ And when error is occur you get information too.
 
 <img src="./public/errorHandling.gif" alt="clock demo animation">
 
+You can easily change interface language if you want:
+
+<img src="./public/languageChanging.gif" alt="interface language changing">
+
 ## Used technologies:
 - html
 - CSS
@@ -35,7 +39,8 @@ And when error is occur you get information too.
 - React.js
 - React hooks (useState, useEffect, useRef, custom hooks)
 - localStorage management
-- XHR data fetching from API
+- data fetching from API (fetch)
+- asynchronous programming (promises)
 - user friendly error handling
 ## How to use this app:
 
