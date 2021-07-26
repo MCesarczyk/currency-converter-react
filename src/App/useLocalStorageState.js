@@ -13,6 +13,7 @@ export const useLocalStorageState = (keyName, initialValue) => {
 
     useEffect(() => {
         localStorage.setItem(keyName, JSON.stringify(state))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state]);
 
     return [state, setState];

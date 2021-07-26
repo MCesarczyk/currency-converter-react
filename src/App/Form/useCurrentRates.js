@@ -43,6 +43,7 @@ export const useCurrentRates = () => {
     };
 
     setTimeout(getRates, 2_000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return ratesData;
