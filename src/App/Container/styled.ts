@@ -7,6 +7,9 @@ export const ContainerBody = styled.div`
     background-position: center;
     background-color: ${({ theme }) => theme.color.background};
     background-attachment: fixed;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
 `;
 
 export const ContainerElement = styled.div`
