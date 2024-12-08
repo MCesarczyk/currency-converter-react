@@ -14,19 +14,19 @@ With this app you're able to convert from PLN to:
 
 App contains field showing current date and time in format using by your device.
 
-<img src="./public/clockDemo.gif">
+<img src="./readmeAssets/clockDemo.gif">
 
 Additionally during the app is fetching data from API, you see proper information.
 
-<img src="./public/startingApp.gif" alt="clock demo animation">
+<img src="./readmeAssets/startingApp.gif" alt="clock demo animation">
 
 And when error is occur you get information too.
 
-<img src="./public/errorHandling.gif" alt="clock demo animation">
+<img src="./readmeAssets/errorHandling.gif" alt="clock demo animation">
 
 You can easily change interface language if you want:
 
-<img src="./public/languageChanging.gif" alt="interface language changing">
+<img src="./readmeAssets/languageChanging.gif" alt="interface language changing">
 
 ## Used technologies:
 - html
@@ -44,7 +44,7 @@ You can easily change interface language if you want:
 - user friendly error handling
 ## How to use this app:
 
-<img src="./public/converterDemo.gif" alt="currency-converter demo animation" />
+<img src="./readmeAssets/converterDemo.gif" alt="currency-converter demo animation" />
 
 1. To exchange any amount write it down in field described "Kwota w PLN" and click "Przelicz" button or simply press Enter.
 1. If you want to change actual currency, click on proper radio button next to the name of desired currency.
