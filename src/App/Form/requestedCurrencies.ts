@@ -1,4 +1,4 @@
-const currencies = [
+const requestedCurrencies = [
     {
         id: "EUR",
         rate: 4.5302,
@@ -14,6 +14,14 @@ const currencies = [
         label: {
             EN: "American dollar",
             PL: "Dolar amerykański"
+        }
+    },
+    {
+        id: "CAD",
+        rate: 2.7986,
+        label: {
+            EN: "Canadian dollar",
+            PL: "Dolar kanadyjski"
         }
     },
     {
@@ -42,4 +50,4 @@ const currencies = [
     }
 ];
 
-export default currencies;
+export default requestedCurrencies;

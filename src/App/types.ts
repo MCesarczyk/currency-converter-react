@@ -1,6 +1,6 @@
-export type Languages = Record<string, ILanguage>;
+export type Languages = Record<string, LanguageContent>;
 
-export interface ILanguage {
+export interface LanguageContent {
   headerTitle: string;
   inputLabel: string;
   inputPlaceholder: string;
@@ -15,7 +15,7 @@ export interface ILanguage {
   dateLabel: string;
 }
 
-export interface ICurrency {
+export interface RequestedCurrency {
   id: string;
   rate: number;
   label: {
@@ -23,4 +23,18 @@ export interface ICurrency {
     PL: string;
   },
   checked: boolean;
+}
+
+export interface ApiCurrency {
+  code: string;
+  value: number;
+}
+
+export type ApiCurrencyDictionary = Record<ApiCurrency['code'], ApiCurrency>
+
+export interface ApiCurrencyResponse {
+  data: ApiCurrencyDictionary;
+  meta: {
+    last_updated_at: string;
+  }
 }

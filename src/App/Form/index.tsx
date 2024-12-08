@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useRef, useState } from "react";
 import { useCurrentRates } from "./useCurrentRates";
 import Clock from "./Clock";
 import Buttons from "./Buttons";
-import currencies from "./currencies";
+import requestedCurrencies from "./requestedCurrencies";
 
 import {
   Fieldset,
@@ -37,8 +37,10 @@ const Form = ({
   resultTitle,
   resultLabel,
 }: Props) => {
-  const ratesData = useCurrentRates();
-  const status = ratesData.status;
+  const requestedCurrenciesIds = requestedCurrencies.map(({ id }) => id);
+
+  const ratesData = useCurrentRates(requestedCurrenciesIds);
+
   const [checkingDate, setCheckingDate] = useState("");
   const [chosenCurrency, setChosenCurrency] = useState("EUR");
   const [newAmount, setNewAmount] = useState("");
@@ -50,7 +52,7 @@ const Form = ({
   };
 
   const getExchangeRate = () => {
-    return currencies.find(({ id }) => id === chosenCurrency)?.rate;
+    return requestedCurrencies.find(({ id }) => id === chosenCurrency)?.rate;
   };
 
   const calculateResult = () => {
@@ -70,10 +72,14 @@ const Form = ({
   const onFormSubmit = (event: FormEvent) => {
     event.preventDefault();
 
+    if (ratesData.status !== "success") {
+      return;
+    }
+
+    setCheckingDate(`${languages[language].dateLabel}${new Date(ratesData.date).toLocaleDateString("pl-PL")}`);
     getExchangeRate();
     calculateResult();
     setNewAmount("");
-    setCheckingDate(`${languages[language].dateLabel}${'date'}`);
     inputRef.current?.focus();
   };
 
@@ -86,21 +92,6 @@ const Form = ({
     setChosenCurrency("EUR");
     inputRef.current?.focus();
   };
-
-  let filteredRates: Record<string, number> | null = null;
-
-  const filterRatesObject = () => {
-    if (ratesData.status === "success") {
-      const wantedCurrencies = currencies.map(({ id }) => id);
-      filteredRates = Object.fromEntries(
-        Object.entries(ratesData.rates).filter(([id]) =>
-          wantedCurrencies.includes(id)
-        )
-      );
-    }
-  };
-
-  filterRatesObject();
 
   return (
     <form onSubmit={onFormSubmit} onReset={onFormReset}>
@@ -118,36 +109,39 @@ const Form = ({
             step="any"
             required
             autoFocus
-            onChange={({ target }) => setNewAmount(target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setNewAmount(e.target.value)}
           />
         </InputLabel>
       </Fieldset>
       <Fieldset>
         <Legend>{listTitle}</Legend>
-        {status === "loading" ? (
+        {ratesData.status === "loading" ? (
           <div>{languages[language].loadingMessage}</div>
-        ) : status === "error" ? (
+        ) : ratesData.status === "error" ? (
           <div>{languages[language].errorMessage}</div>
         ) : (
           <List>
-            {filteredRates && Object.keys(filteredRates).map((key, value) => (
-              <ListItem key={key}>
-                <input
-                  type="radio"
-                  name="chosenCurrency"
-                  id={key}
-                  value={key}
-                  checked={chosenCurrency === key}
-                  onChange={onCurrencyChange}
-                />
-                <ListLabel htmlFor={key}>
-                  {
-                    currencies.find(({ id }) => id === key)?.label[language as "EN" | "PL"]
-                  }
-                </ListLabel>
-                {filteredRates && (1 / Object.values(filteredRates)[value]).toFixed(4)}
-              </ListItem>
-            ))}
+            {ratesData.rates &&
+              Object.values(ratesData.rates).map(({ code, value }) => (
+                <ListItem key={code}>
+                  <input
+                    type="radio"
+                    name="chosenCurrency"
+                    id={code}
+                    value={code}
+                    checked={chosenCurrency === code}
+                    onChange={onCurrencyChange}
+                  />
+                  <ListLabel htmlFor={code}>
+                    {
+                      requestedCurrencies.find(({ id }) => id === code)?.label[
+                        language as "EN" | "PL"
+                      ]
+                    }
+                  </ListLabel>
+                  {value.toFixed(4)}
+                </ListItem>
+              ))}
           </List>
         )}
       </Fieldset>

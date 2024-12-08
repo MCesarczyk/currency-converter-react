@@ -1,19 +1,24 @@
-FROM node:18.20.5-alpine3.19 AS base
+FROM node:22.12.0-alpine3.20 AS base
 
 ARG NODE_ENV=production
+ARG REACT_APP_API_KEY
+
 ENV NODE_ENV=$NODE_ENV
+ENV REACT_APP_API_KEY=$REACT_APP_API_KEY
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
+
 RUN corepack enable && corepack install --global pnpm@latest
 ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+
 COPY . /app
 WORKDIR /app
 
 FROM base AS prod-deps
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod
 
 FROM base AS build
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install
 RUN pnpm run build:dev
 
 FROM base AS development
@@ -22,7 +27,7 @@ COPY --from=build /app/build /app/build
 EXPOSE 3000
 CMD [ "pnpm", "start" ]
 
-FROM nginx:1.27.0-alpine3.19 AS production
+FROM nginx:1.26.2-alpine3.20 AS production
 COPY --from=build /app/build /usr/share/nginx/html
 
 CMD ["nginx", "-g", "daemon off;"]

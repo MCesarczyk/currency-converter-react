@@ -1,29 +1,31 @@
 import { useEffect, useState } from "react";
+import { ApiCurrencyDictionary } from "../types";
 
 type RatesData =
   | {
     status: "loading";
-    base: string;
     date: null;
     rates: null;
   } | {
     status: "success";
-    base: string;
     date: string;
-    rates: Record<string, number>;
+    rates: ApiCurrencyDictionary;
   } | {
     status: "error";
   }
 
-export const useCurrentRates = () => {
+export const useCurrentRates = (currencies: string[]) => {
   const [ratesData, setRatesData] = useState<RatesData>({
     status: "loading",
-    base: "PLN",
     date: null,
     rates: null
   });
 
-  const requestURL = 'https://api.exchangerate.host/latest';
+  const requestedCurrenciesQuery = encodeURIComponent(currencies.join(","));
+
+  const requestURL = `https://api.currencyapi.com/v3/latest?apikey=${process.env.REACT_APP_API_KEY}&currencies=${requestedCurrenciesQuery}`;
+
+  const base = "PLN";
 
   useEffect(() => {
     if (ratesData.status === "error") {
@@ -32,27 +34,22 @@ export const useCurrentRates = () => {
 
     const getRates = async () => {
       try {
-        const response = await fetch(requestURL + "?base=" + ratesData.base);
+        const response = await fetch(requestURL + "&base_currency=" + base);
 
         if (!response.ok) {
           throw new Error("No response");
         }
 
-        const { base, date, rates } = await response.json();
+        const { data, meta } = await response.json();
 
-        if (!rates) {
+        if (!data) {
           throw new Error("No rates data");
-        }
-
-        if (base !== ratesData.base) {
-          throw new Error(`Wrong currency base: ${base}`);
         }
 
         setRatesData({
           status: "success",
-          base: base,
-          date: date,
-          rates: rates
+          date: meta.last_updated_at,
+          rates: data
         });
 
       } catch (error) {
@@ -64,8 +61,7 @@ export const useCurrentRates = () => {
     };
 
     setTimeout(getRates, 2_000);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return ratesData;
 };
