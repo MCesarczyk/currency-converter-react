@@ -1,7 +1,22 @@
 import { useEffect, useState } from "react";
 
+type RatesData =
+  | {
+    status: "loading";
+    base: string;
+    date: null;
+    rates: null;
+  } | {
+    status: "success";
+    base: string;
+    date: string;
+    rates: Record<string, number>;
+  } | {
+    status: "error";
+  }
+
 export const useCurrentRates = () => {
-  const [ratesData, setRatesData] = useState({
+  const [ratesData, setRatesData] = useState<RatesData>({
     status: "loading",
     base: "PLN",
     date: null,
@@ -11,6 +26,10 @@ export const useCurrentRates = () => {
   const requestURL = 'https://api.exchangerate.host/latest';
 
   useEffect(() => {
+    if (ratesData.status === "error") {
+      return;
+    }
+
     const getRates = async () => {
       try {
         const response = await fetch(requestURL + "?base=" + ratesData.base);
@@ -37,8 +56,10 @@ export const useCurrentRates = () => {
         });
 
       } catch (error) {
-        setRatesData({ status: "error" });
-        console.log(error.message);
+        if (error instanceof Error) {
+          setRatesData({ status: "error" });
+          console.log(error.message);
+        }
       }
     };
 
